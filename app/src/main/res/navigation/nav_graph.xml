@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainMode">
+
+    <fragment
+        android:id="@+id/mainMode"
+        android:name="by.paulharokh.footballvalues.ModeMenu"
+        tools:layout="@layout/fragment_main_mode" />
+    <fragment
+        android:id="@+id/deal"
+        android:name="by.paulharokh.footballvalues.Deal"
+        tools:layout="@layout/fragment_deal" />
+</navigation>

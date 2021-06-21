@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layoutDescription="@xml/header_layout_scene"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textColor="@color/white"
+        android:background="@color/menu_blue"
+        android:textSize="20sp"
+        android:text="My second Drawer"
+        android:paddingLeft="20dp"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        />
+
+
+</LinearLayout>
