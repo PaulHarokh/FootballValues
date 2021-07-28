@@ -2,6 +2,7 @@ package by.paulharokh.footballvalues
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
@@ -11,8 +12,22 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
+
+
+    val apiRequest = ApiRequest.create()
+
     private lateinit var navController: NavController
     lateinit var viewModel: gmViewModel
 
@@ -46,6 +61,25 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, drawer_lay)
         toolbar_id.setupWithNavController(navController, drawer_lay)
         nav_view_id.setupWithNavController(navController)
+
+
+
+        CoroutineScope(Dispatchers.Default).launch {
+
+            val client = OkHttpClient()
+
+            val request = Request.Builder()
+                .url("https://transfermarket.p.rapidapi.com/players/get-market-value?id=74842")
+                .get()
+                .addHeader("x-rapidapi-key", "186305a549mshfe32eafb57a74a1p1531f2jsnc6d24c94dab5")
+                .addHeader("x-rapidapi-host", "transfermarket.p.rapidapi.com")
+                .build()
+
+            val response = client.newCall(request).execute()
+
+            response.body()?.let { Log.d("!!!r", it.string()) }
+
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

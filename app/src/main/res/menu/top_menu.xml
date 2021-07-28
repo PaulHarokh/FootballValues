@@ -2,23 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title=""
         android:id="@+id/blank"
         android:icon="@drawable/ic_more"
-        app:showAsAction="always"
-        >
-    <menu>
-    <item
-        android:title="i1"
-        android:id="@+id/mainMode"
-        app:showAsAction="always"
-        />
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/mainMode"
+                android:title="i1"
+                app:showAsAction="always" />
 
-    <item
-        android:title="i2"
-        android:id="@+id/deal"
-        app:showAsAction="never"
-        />
-  </menu>
-  </item>
+            <item
+                android:id="@+id/deal"
+                android:title="i2"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/dealResult"
+                android:title="i3"
+                app:showAsAction="never" />
+        </menu>
+    </item>
 </menu>
