@@ -13,26 +13,25 @@
         android:id="@+id/editText_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:gravity="center_horizontal"
         android:hint="enter value"
         android:inputType="number"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/textView_curr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_curr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mln euro"
+        android:text="(mln euro)"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/accept_btn_id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/accept_btn_id" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/accept_btn_id"
@@ -47,6 +46,83 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/im_footballer_id"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_footballer_name_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:text="Name"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/im_footballer_id"
+        app:layout_constraintTop_toBottomOf="@+id/im_footballer_id" />
+
+    <ImageView
+        android:id="@+id/im_club_id"
+        android:layout_width="15dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toStartOf="@+id/im_footballer_id"
+        app:layout_constraintTop_toBottomOf="@+id/tv_footballer_name_id" />
+
+    <TextView
+        android:id="@+id/tv_club_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/im_club_id"
+        app:layout_constraintEnd_toEndOf="@+id/tv_footballer_name_id"
+        app:layout_constraintStart_toStartOf="@+id/tv_footballer_name_id"
+        app:layout_constraintTop_toTopOf="@+id/im_club_id" />
+
+    <TextView
+        android:id="@+id/tv_salesman_id"
+        android:layout_width="200dp"
+        android:layout_height="110dp"
+        android:text="Lets go geal. Our player here:"
+        android:gravity="center"
+        android:textSize="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/draw_dialogue_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_manager_id"
+        android:layout_width="120dp"
+        android:layout_height="65dp"
+        android:text="No to much for us!"
+        android:gravity="center"
+        android:textSize="10dp"
+        android:background="@drawable/draw_dialogue_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_buyer_id" />
+
+    <TextView
+        android:id="@+id/tv_buyer_id"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/draw_dialogue_end"
+        android:gravity="center"
+        android:text="My bid is 10mln"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_club_id" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,16 +15,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
-
 
     val apiRequest = ApiRequest.create()
 
@@ -62,23 +57,27 @@ class MainActivity : AppCompatActivity() {
         toolbar_id.setupWithNavController(navController, drawer_lay)
         nav_view_id.setupWithNavController(navController)
 
+        CoroutineScope(Dispatchers.IO).launch {
 
+            val player = apiRequest.getPlayer(
+                "transfermarket.p.rapidapi.com",
+                "186305a549mshfe32eafb57a74a1p1531f2jsnc6d24c94dab5"
+            )
 
-        CoroutineScope(Dispatchers.Default).launch {
+            player.enqueue(object : Callback<PlayerHeader> {
+                override fun onResponse(
+                    call: Call<PlayerHeader>,
+                    response: Response<PlayerHeader>
+                ) {
+                    response.body()?.let {
+                        Log.d("!!!q", it.toString())
+                    }
+                }
 
-            val client = OkHttpClient()
-
-            val request = Request.Builder()
-                .url("https://transfermarket.p.rapidapi.com/players/get-market-value?id=74842")
-                .get()
-                .addHeader("x-rapidapi-key", "186305a549mshfe32eafb57a74a1p1531f2jsnc6d24c94dab5")
-                .addHeader("x-rapidapi-host", "transfermarket.p.rapidapi.com")
-                .build()
-
-            val response = client.newCall(request).execute()
-
-            response.body()?.let { Log.d("!!!r", it.string()) }
-
+                override fun onFailure(call: Call<PlayerHeader>, t: Throwable) {
+                    Log.d("!!!t", t.toString())
+                }
+            })
         }
     }
 

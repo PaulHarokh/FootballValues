@@ -1,12 +1,10 @@
 package by.paulharokh.footballvalues
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 
 class GameModeAdapter (var viewModel: gmViewModel, val fragment: ModeMenu) :
@@ -18,7 +16,7 @@ class GameModeAdapter (var viewModel: gmViewModel, val fragment: ModeMenu) :
         var imGameMode: ImageView? = null
 
         init {
-            tvNameMode = itemView.findViewById(R.id.tv_name_id)
+            tvNameMode = itemView.findViewById(R.id.tv_GM_name_id)
             tvScore = itemView.findViewById(R.id.tv_score_id)
             imGameMode = itemView.findViewById(R.id.im_gamemode_id)
         }

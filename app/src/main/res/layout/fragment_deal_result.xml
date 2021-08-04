@@ -7,13 +7,44 @@
     tools:context=".DealResult">
 
     <ImageView
+        android:id="@+id/im_res_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/hands"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_menu_id"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_again_id"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Try again"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_menu_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_deal_res_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="real value and result"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/im_res_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

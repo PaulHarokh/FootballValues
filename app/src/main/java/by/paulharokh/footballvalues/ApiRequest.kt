@@ -2,21 +2,22 @@ package by.paulharokh.footballvalues
 
 
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Header
 import java.util.concurrent.TimeUnit
 
-
-const val BASE_URL = "https://transfermarket.p.rapidapi.com/players/get-market-value/"
+const val BASE_URL = "https://transfermarket.p.rapidapi.com/players/"
 
 interface ApiRequest {
 
-    @GET("market")
-    fun getMarket( @Query("id") id: String): Call<Int>
+    @GET("get-header-info?id=74842")
+    fun getPlayer(
+        @Header("X-RapidAPI-Host") api: String?,
+        @Header("X-RapidAPI-Key") apiKey: String?
+    ): Call<PlayerHeader>
 
     companion object Factory {
         fun create(): ApiRequest {
@@ -31,18 +32,8 @@ interface ApiRequest {
                 .client(okHttpClient)
                 .build()
 
-
-//            val request = Request.Builder()
-//                .url("https://transfermarket.p.rapidapi.com/players/get-market-value?id=74842")
-//                .get()
-//                .addHeader("x-rapidapi-host", "transfermarket.p.rapidapi.com")
-//                .build()
-//
-//            val response = okHttpClient.newCall(request).execute()
-
-
             return retrofit.create(ApiRequest::class.java)
         }
-
     }
+
 }

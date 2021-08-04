@@ -27,7 +27,7 @@
             app:srcCompat="@drawable/draw_makelele" />
 
         <TextView
-            android:id="@+id/tv_name_id"
+            android:id="@+id/tv_GM_name_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -42,7 +42,7 @@
             android:id="@+id/im_ball_id"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_below="@+id/tv_name_id"
+            android:layout_below="@+id/tv_GM_name_id"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
@@ -58,7 +58,7 @@
             android:text="0"
             android:layout_toEndOf="@+id/im_ball_id"
             android:layout_margin="5dp"
-            android:layout_below="@+id/tv_name_id" />
+            android:layout_below="@+id/tv_GM_name_id" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
