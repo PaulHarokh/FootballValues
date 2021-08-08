@@ -24,7 +24,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            app:srcCompat="@drawable/draw_makelele" />
+            app:srcCompat="@drawable/draw_xavi" />
 
         <TextView
             android:id="@+id/tv_GM_name_id"

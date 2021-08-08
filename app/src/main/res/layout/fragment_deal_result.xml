@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DealResult">
+    tools:context=".Result">
+
+    <TextView
+        android:id="@+id/tv_deal_res_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="real value and result"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/im_res_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/im_res_id"
@@ -18,8 +31,10 @@
 
     <Button
         android:id="@+id/btn_menu_id"
-        android:layout_width="200dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_btn"
         android:text="Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,24 +42,13 @@
 
     <Button
         android:id="@+id/btn_again_id"
-        android:layout_width="200dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Try again"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_btn"
+        android:text="Try again"
         app:layout_constraintBottom_toTopOf="@+id/btn_menu_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_deal_res_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="real value and result"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/im_res_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

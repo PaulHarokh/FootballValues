@@ -15,7 +15,6 @@
         tools:layout="@layout/fragment_deal" />
     <fragment
         android:id="@+id/dealResult"
-        android:name="by.paulharokh.footballvalues.DealResult"
-        android:label="fragment_deal_result"
+        android:name="by.paulharokh.footballvalues.Result"
         tools:layout="@layout/fragment_deal_result" />
 </navigation>

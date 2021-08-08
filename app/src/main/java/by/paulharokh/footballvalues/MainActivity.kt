@@ -1,8 +1,8 @@
 package by.paulharokh.footballvalues
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
@@ -12,40 +12,17 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    val apiRequest = ApiRequest.create()
-
     private lateinit var navController: NavController
-    lateinit var viewModel: gmViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(gmViewModel::class.java)
-
-        val modes = arrayOf(
-            R.drawable.draw_ronaldo to "Strikers",
-            R.drawable.draw_xavi to "Midfielders",
-            R.drawable.draw_maldini to "Defenders",
-            R.drawable.draw_yashin to "Goalkeepers",
-        )
-
-        fun addToGM(pair: Pair<Int, String>) {
-            viewModel.modes.add(GameMode(pair.first, pair.second, 0))
-        }
-
-        for (i in modes.indices) {
-            addToGM(modes[i])
-        }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -56,29 +33,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, drawer_lay)
         toolbar_id.setupWithNavController(navController, drawer_lay)
         nav_view_id.setupWithNavController(navController)
-
-        CoroutineScope(Dispatchers.IO).launch {
-
-            val player = apiRequest.getPlayer(
-                "transfermarket.p.rapidapi.com",
-                "186305a549mshfe32eafb57a74a1p1531f2jsnc6d24c94dab5"
-            )
-
-            player.enqueue(object : Callback<PlayerHeader> {
-                override fun onResponse(
-                    call: Call<PlayerHeader>,
-                    response: Response<PlayerHeader>
-                ) {
-                    response.body()?.let {
-                        Log.d("!!!q", it.toString())
-                    }
-                }
-
-                override fun onFailure(call: Call<PlayerHeader>, t: Throwable) {
-                    Log.d("!!!t", t.toString())
-                }
-            })
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

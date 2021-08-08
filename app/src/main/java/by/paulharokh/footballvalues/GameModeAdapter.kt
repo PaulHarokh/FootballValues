@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class GameModeAdapter (var viewModel: gmViewModel, val fragment: ModeMenu) :
+class GameModeAdapter (var viewModel: GMViewModel, val fragment: ModeMenu) :
     RecyclerView.Adapter<GameModeAdapter.GameModeHolder>() {
 
     class GameModeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,11 +34,11 @@ class GameModeAdapter (var viewModel: gmViewModel, val fragment: ModeMenu) :
     }
 
     override fun getItemCount(): Int {
-        return viewModel.modes.size
+        return viewModel.modesVM.size
     }
 
     override fun onBindViewHolder(holder: GameModeHolder, position: Int) {
-        val gameMode = viewModel.modes[position]
+        val gameMode = viewModel.modesVM[position]
 
         holder.tvNameMode?.text = gameMode.nameMode
         holder.tvScore?.text = gameMode.scoreMode.toString()
