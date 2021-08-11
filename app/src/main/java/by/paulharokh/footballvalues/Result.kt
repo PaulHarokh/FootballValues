@@ -1,11 +1,10 @@
 package by.paulharokh.footballvalues
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -33,14 +32,14 @@ class Result : Fragment() {
 
         val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
         val editVal = viewModelVal.valueF?.times(1000000)
-        val rangeVal = realVal * 0.95 ..realVal * 1.05
+        val rangeVal = realVal * 0.95..realVal * 1.05
 
         if (editVal!! in rangeVal) {
             im_res_id.setImageResource(R.drawable.draw_success)
-            tv_deal_res_id.text = "Good job,\nreal value is ${realVal/1000000} mln"
+            tv_deal_res_id.text = "Good job,\nreal value is ${realVal / 1000000} mln €"
         } else {
             im_res_id.setImageResource(R.drawable.draw_missed)
-            tv_deal_res_id.text = "Deal missed,\nreal value is ${realVal/1000000}mln"
+            tv_deal_res_id.text = "Deal missed,\nreal value is ${realVal / 1000000} mln €"
         }
 
         btn_again_id.setOnClickListener {

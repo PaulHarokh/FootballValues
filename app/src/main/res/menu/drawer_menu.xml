@@ -7,17 +7,4 @@
         android:icon="@drawable/draw_gold_ball"
         app:showAsAction="never"
         />
-    <item
-        android:title="i2"
-        android:id="@+id/deal"
-        android:icon="@drawable/draw_gold_ball"
-        app:showAsAction="never"
-        />
-
-    <item
-        android:title="i3"
-        android:id="@+id/dealResult"
-        android:icon="@drawable/draw_gold_ball"
-        app:showAsAction="never"
-        />
 </menu>

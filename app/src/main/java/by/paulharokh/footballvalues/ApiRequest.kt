@@ -13,7 +13,7 @@ const val BASE_URL = "https://transfermarket.p.rapidapi.com/players/"
 
 interface ApiRequest {
 
-    @GET("get-header-info?id=28003")
+    @GET("get-header-info?id=314353")
     fun getFootballer(
         @Header("X-RapidAPI-Host") api: String?,
         @Header("X-RapidAPI-Key") apiKey: String?

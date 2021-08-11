@@ -1,7 +1,5 @@
 package by.paulharokh.footballvalues
 
-import android.graphics.Bitmap
-
 data class FootballerHeader(
     val data: Data
 )
@@ -22,6 +20,6 @@ data class MarketValue(
 )
 
 data class Club(
-    val fullName: String,
+    val name: String,
     val image: String,
 )

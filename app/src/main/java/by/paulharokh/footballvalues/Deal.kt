@@ -5,10 +5,8 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -57,11 +55,10 @@ class Deal : Fragment() {
                 })
         }
 
-
         urlToBitmap(this, viewModelF.footballerVM!!.data.player.image, im_footballer_id)
         urlToBitmap(this, viewModelF.footballerVM!!.data.club.image, im_club_id)
 
-        var clubName = viewModelF.footballerVM?.data?.club?.fullName
+        var clubName = viewModelF.footballerVM?.data?.club?.name
         if (clubName.equals("Vereinslos")) clubName = "Free Agent"
 
         tv_club_id.text = clubName
@@ -78,7 +75,6 @@ class Deal : Fragment() {
                 btn_accept_id.isEnabled = !s.isNullOrEmpty()
             }
         })
-
 
         navController = view.findNavController()
         btn_accept_id.setOnClickListener {
