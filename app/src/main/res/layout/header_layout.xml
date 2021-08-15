@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layoutDescription="@xml/header_layout_scene"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:textColor="@color/white"
         android:background="@color/menu_blue"
         android:textSize="20sp"
-        android:text="My second Drawer"
+        android:text="Menu"
         android:paddingLeft="20dp"
         android:paddingBottom="5dp"
         android:textStyle="bold"

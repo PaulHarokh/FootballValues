@@ -5,12 +5,12 @@
         android:id="@+id/blank"
         android:icon="@drawable/ic_more"
         android:title=""
-        app:showAsAction="always">
+        app:showAsAction="ifRoom">
         <menu>
             <item
                 android:id="@+id/mainMode"
-                android:title="i1"
-                app:showAsAction="always" />
+                android:title="Game Modes"
+                app:showAsAction="never" />
         </menu>
     </item>
 </menu>

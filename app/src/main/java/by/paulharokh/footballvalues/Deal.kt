@@ -80,7 +80,7 @@ class Deal : Fragment() {
         btn_accept_id.setOnClickListener {
             navController.navigate(R.id.dealResult)
             viewModelVal = ViewModelProvider(activity as MainActivity).get(IntViewModel::class.java)
-            viewModelVal.valueF = editText_id.text.toString().toDouble()
+            viewModelVal.editVal = editText_id.text.toString().toDouble()
 
 
         }

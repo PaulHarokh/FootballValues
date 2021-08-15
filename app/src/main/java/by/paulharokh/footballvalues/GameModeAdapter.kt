@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class GameModeAdapter (var viewModel: GMViewModel, val fragment: ModeMenu) :
     RecyclerView.Adapter<GameModeAdapter.GameModeHolder>() {
@@ -27,8 +30,10 @@ class GameModeAdapter (var viewModel: GMViewModel, val fragment: ModeMenu) :
         val layout = inflater.inflate(R.layout.item_layout, parent, false)
         val holder = GameModeHolder(layout)
 
-        holder.itemView.setOnClickListener {
-            fragment.startGame(holder.adapterPosition)
+            holder.itemView.setOnClickListener {
+                CoroutineScope(Dispatchers.Main).launch{
+                fragment.startGame(holder.adapterPosition)
+            }
         }
         return holder
     }
