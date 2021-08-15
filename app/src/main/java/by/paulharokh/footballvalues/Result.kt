@@ -16,6 +16,7 @@ class Result : Fragment() {
     lateinit var navController: NavController
     lateinit var viewModelF: FViewModel
     lateinit var viewModelVal: IntViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,9 +31,13 @@ class Result : Fragment() {
 
         navController = view.findNavController()
 
+        val actionB = (activity as MainActivity).supportActionBar
+        actionB?.hide()
+
         val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
-        val editVal = viewModelVal.valueF?.times(1000000)
+        val editVal = viewModelVal.editVal?.times(1000000)
         val rangeVal = realVal * 0.95..realVal * 1.05
+
 
         if (editVal!! in rangeVal) {
             im_res_id.setImageResource(R.drawable.draw_success)
@@ -42,13 +47,15 @@ class Result : Fragment() {
             tv_deal_res_id.text = "Deal missed,\nreal value is ${realVal / 1000000} mln €"
         }
 
-        btn_again_id.setOnClickListener {
-            navController.navigate(R.id.deal)
-        }
-
         btn_menu_id.setOnClickListener {
             navController.navigate(R.id.mainMode)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val actionB = (activity as MainActivity).supportActionBar
+        actionB?.show()
     }
 
 }

@@ -11,5 +11,5 @@ class FViewModel : ViewModel() {
 }
 
 class IntViewModel : ViewModel() {
-    var valueF: Double? = null
+    var editVal: Double? = null
 }
