@@ -10,7 +10,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class GameModeAdapter (var viewModel: GMViewModel, val fragment: ModeMenu) :
+
+class GameModeAdapter (var modes: Array<GameMode>, val fragment: FragmentModeMenu) :
     RecyclerView.Adapter<GameModeAdapter.GameModeHolder>() {
 
     class GameModeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,14 +40,15 @@ class GameModeAdapter (var viewModel: GMViewModel, val fragment: ModeMenu) :
     }
 
     override fun getItemCount(): Int {
-        return viewModel.modesVM.size
+        return modes.size
     }
 
     override fun onBindViewHolder(holder: GameModeHolder, position: Int) {
-        val gameMode = viewModel.modesVM[position]
-
+        val gameMode = modes[position]
+        gameMode.let { holder.imGameMode?.setImageResource(it.photoRes) }
         holder.tvNameMode?.text = gameMode.nameMode
         holder.tvScore?.text = gameMode.scoreMode.toString()
-        holder.imGameMode?.setImageResource(gameMode.photoRes)
+
     }
+
 }

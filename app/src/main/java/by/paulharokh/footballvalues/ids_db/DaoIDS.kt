@@ -1,4 +1,4 @@
-package by.paulharokh.stolendb
+package by.paulharokh.footballvalues.ids_db
 
 import androidx.room.Dao
 import androidx.room.Query

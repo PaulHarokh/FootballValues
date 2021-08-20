@@ -1,7 +1,6 @@
 package by.paulharokh.footballvalues
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,18 +11,20 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import by.paulharokh.stolendb.idsDatabase
+import by.paulharokh.footballvalues.ids_db.IdsDatabase
+import by.paulharokh.footballvalues.points_db.PointsDatabase
 import kotlinx.android.synthetic.main.fragment_main_mode.*
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ModeMenu : Fragment() {
+
+class FragmentModeMenu : Fragment() {
 
     lateinit var navController: NavController
-    lateinit var viewModelGM: GMViewModel
-    lateinit var viewModelF: FViewModel
+    lateinit var viewModelGM: ViewModelGM
+    lateinit var viewModelF: ViewModelF
 
     val apiRequest = ApiRequest.create()
 
@@ -31,34 +32,6 @@ class ModeMenu : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        viewModelGM = ViewModelProvider(this).get(GMViewModel::class.java)
-
-        val modes = arrayOf(
-            R.drawable.draw_ronaldo to "Strikers",
-            R.drawable.draw_xavi to "Midfielders",
-            R.drawable.draw_maldini to "Defenders",
-            R.drawable.draw_yashin to "Goalkeepers",
-        )
-
-        fun addToGM(pair: Pair<Int, String>) {
-            viewModelGM.modesVM.add(
-                GameMode(
-                    pair.first,
-                    pair.second,
-                    0
-                )
-            )
-        }
-
-        if (viewModelGM.modesVM.isEmpty()) {
-            for (i in modes.indices) {
-                addToGM(modes[i])
-            }
-        }
-
-
-
         return inflater.inflate(R.layout.fragment_main_mode, container, false)
     }
 
@@ -67,36 +40,59 @@ class ModeMenu : Fragment() {
 
         navController = view.findNavController()
 
-        rv_myList_id.adapter = GameModeAdapter(viewModelGM, this)
+        viewModelGM = ViewModelProvider(activity as MainActivity).get(ViewModelGM::class.java)
+
+        viewModelGM.modesScoreVM = Room.databaseBuilder(
+            activity as MainActivity,
+            PointsDatabase::class.java,
+            "points"
+        )
+            .allowMainThreadQueries()
+            .createFromAsset("points_GM.db")
+            .build()
+
+        val strP = viewModelGM.modesScoreVM!!.pointsDao().getStrP().gmPs
+        val midP = viewModelGM.modesScoreVM!!.pointsDao().getMidP().gmPs
+        val defP = viewModelGM.modesScoreVM!!.pointsDao().getDefP().gmPs
+        val gkP = viewModelGM.modesScoreVM!!.pointsDao().getGkP().gmPs
+
+        val modes = arrayOf(
+            GameMode(R.drawable.draw_ronaldo, "Strikers", strP),
+            GameMode(R.drawable.draw_xavi, "Midfielders", midP),
+            GameMode(R.drawable.draw_maldini, "Defenders", defP),
+            GameMode(R.drawable.draw_yashin, "Goalkeepers", gkP)
+        )
+
+        rv_myList_id.adapter = GameModeAdapter(modes, this)
         rv_myList_id.layoutManager = LinearLayoutManager(context)
+
     }
 
     suspend fun startGame(adapterPosition: Int) {
 
+        viewModelGM.adapterPosVM = adapterPosition
+
+        rv_myList_id.visibility = View.INVISIBLE
+        tv_load_id.visibility = View.VISIBLE
+        progressBar_id.visibility = View.VISIBLE
+
         viewLifecycleOwner.lifecycleScope.launch {
 
             val db =
-                Room.databaseBuilder(activity as MainActivity, idsDatabase::class.java, "idsDB.db")
+                Room.databaseBuilder(activity as MainActivity, IdsDatabase::class.java, "idsDB.db")
                     .createFromAsset("footballersIDS.db")
-                    .allowMainThreadQueries()
                     .build()
-
-            val strIDS = db.idsDao().getStrikers().shuffled().first()
-            val midIDS = db.idsDao().getMidfielders().shuffled().first()
-            val defIDS = db.idsDao().getDefenders().shuffled().first()
-            val gkIDS = db.idsDao().getGoalkeepers().shuffled().first()
-
 
             viewLifecycleOwner.lifecycleScope.launch {
 
-                viewModelF = ViewModelProvider(activity as MainActivity).get(FViewModel::class.java)
+                viewModelF = ViewModelProvider(activity as MainActivity).get(ViewModelF::class.java)
 
-                val totalID= when (adapterPosition) {
-                    0 -> strIDS
-                    1 -> midIDS
-                    2 -> defIDS
-                    3 -> gkIDS
-                    else -> strIDS
+                val totalID = when (adapterPosition) {
+                    0 -> db.idsDao().getStrikers().shuffled().first()
+                    1 -> db.idsDao().getMidfielders().shuffled().first()
+                    2 -> db.idsDao().getDefenders().shuffled().first()
+                    3 -> db.idsDao().getGoalkeepers().shuffled().first()
+                    else -> 0
                 }
 
                 val footballerReq = apiRequest.getFootballer(
@@ -119,7 +115,6 @@ class ModeMenu : Fragment() {
                     }
 
                     override fun onFailure(call: Call<FootballerHeader>, t: Throwable) {
-                        Log.d("!!!t", t.toString())
                     }
                 })
             }

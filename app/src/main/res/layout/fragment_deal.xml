@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_deal_scene2"
-    tools:context=".Deal">
+    tools:context=".FragmentDeal">
 
     <ImageView
         android:id="@+id/draw_desk"
@@ -23,16 +23,16 @@
         android:layout_height="wrap_content"
         android:maxLength="5"
         android:gravity="center_horizontal"
-        android:hint="enter value"
+        android:hint="@string/edit_val"
         android:inputType="numberDecimal"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_curr"
+        app:layout_constraintBottom_toTopOf="@+id/tv_curr_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_curr"
+        android:id="@+id/tv_curr_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -50,7 +50,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_btn"
         android:enabled="false"
-        android:text="Buy"
+        android:text="@string/btn_buy"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +85,6 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Lionel Messioioioioioioi"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="@+id/im_footballer_id"
                 app:layout_constraintStart_toStartOf="@+id/im_footballer_id"
@@ -104,7 +103,6 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="PSB EINDHOVEN"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tv_footballer_name_id"
@@ -132,20 +130,20 @@
         android:layout_height="55dp"
         android:background="@drawable/draw_dialogue_start"
         android:gravity="center"
-        android:text="@string/manager_ok"
+        android:visibility="gone"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_buyer_id"
+        app:layout_constraintBottom_toBottomOf="@id/tv_agent_id"
         app:layout_constraintEnd_toEndOf="@+id/desk_divider_h_id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_buyer_id" />
+        app:layout_constraintTop_toTopOf="@id/tv_agent_id" />
 
     <TextView
-        android:id="@+id/tv_buyer_id"
+        android:id="@+id/tv_agent_id"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:background="@drawable/draw_dialogue_end"
         android:gravity="center"
-        android:text="@string/buyer"
+        android:visibility="gone"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/desk_divider_v_id"
         app:layout_constraintEnd_toEndOf="parent"

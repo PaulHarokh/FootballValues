@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/mainMode"
-        android:name="by.paulharokh.footballvalues.ModeMenu"
+        android:name="by.paulharokh.footballvalues.FragmentModeMenu"
         tools:layout="@layout/fragment_main_mode" />
     <fragment
         android:id="@+id/deal"
-        android:name="by.paulharokh.footballvalues.Deal"
+        android:name="by.paulharokh.footballvalues.FragmentDeal"
         tools:layout="@layout/fragment_deal" />
     <fragment
         android:id="@+id/dealResult"
-        android:name="by.paulharokh.footballvalues.Result"
+        android:name="by.paulharokh.footballvalues.FragmentResult"
         tools:layout="@layout/fragment_deal_result" />
 </navigation>

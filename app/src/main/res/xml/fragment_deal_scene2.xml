@@ -23,7 +23,7 @@
             android:layout_height="60dp"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="140dp"
-            android:id="@+id/tv_buyer_id"
+            android:id="@+id/tv_agent_id"
             motion:layout_constraintTop_toTopOf="@+id/draw_desk"
             motion:layout_constraintBottom_toBottomOf="@+id/desk_divider_v_id" />
         <Constraint

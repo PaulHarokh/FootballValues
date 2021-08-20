@@ -1,4 +1,4 @@
-package by.paulharokh.stolendb
+package by.paulharokh.footballvalues.ids_db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

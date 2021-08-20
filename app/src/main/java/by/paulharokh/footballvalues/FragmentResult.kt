@@ -11,18 +11,18 @@ import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_deal_result.*
 
 
-class Result : Fragment() {
+class FragmentResult : Fragment() {
 
     lateinit var navController: NavController
-    lateinit var viewModelF: FViewModel
-    lateinit var viewModelVal: IntViewModel
+    lateinit var viewModelF: ViewModelF
+    lateinit var viewModelRes: ViewModelRes
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModelF = ViewModelProvider(activity as MainActivity).get(FViewModel::class.java)
-        viewModelVal = ViewModelProvider(activity as MainActivity).get(IntViewModel::class.java)
+        viewModelF = ViewModelProvider(activity as MainActivity).get(ViewModelF::class.java)
+        viewModelRes = ViewModelProvider(activity as MainActivity).get(ViewModelRes::class.java)
         return inflater.inflate(R.layout.fragment_deal_result, container, false)
     }
 
@@ -35,11 +35,8 @@ class Result : Fragment() {
         actionB?.hide()
 
         val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
-        val editVal = viewModelVal.editVal?.times(1000000)
-        val rangeVal = realVal * 0.95..realVal * 1.05
-
-
-        if (editVal!! in rangeVal) {
+        val dealRes = viewModelRes.res
+        if (dealRes) {
             im_res_id.setImageResource(R.drawable.draw_success)
             tv_deal_res_id.text = "Good job,\nreal value is ${realVal / 1000000} mln €"
         } else {

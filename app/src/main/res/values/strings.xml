@@ -5,7 +5,9 @@
     <string name="salesman_start">Our player is here:</string>
     <string name="salesman_ok">I agree</string>
     <string name="salesman_ban">I disagree</string>
-    <string name="manager_ban">To much for us</string>
+    <string name="manager_ban">It is much</string>
     <string name="manager_ok">Agree that</string>
-    <string name="buyer">Our last bid</string>
+    <string name="agent">Our last bid</string>
+    <string name="edit_val">enter value</string>
+    <string name="btn_buy">Buy</string>
 </resources>
