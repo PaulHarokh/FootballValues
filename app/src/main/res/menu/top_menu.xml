@@ -3,13 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/blank"
-        android:icon="@drawable/ic_more"
-        android:title=""
-        app:showAsAction="ifRoom">
+        android:title="Difficulty"
+        android:onClick="actualLvl"
+        app:showAsAction="collapseActionView">
         <menu>
             <item
-                android:id="@+id/mainMode"
-                android:title="Game Modes"
+                android:id="@+id/toolbar_low_id"
+                android:title="Low"
+                android:onClick="lowClicked"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/toolbar_medium_id"
+                android:title="Medium"
+                android:onClick="mediumClicked"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/toolbar_high_id"
+                android:title="High"
+                android:onClick="highClicked"
                 app:showAsAction="never" />
         </menu>
     </item>

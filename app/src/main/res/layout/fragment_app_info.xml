@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentAppInfo">
+
+    <TextView
+        android:id="@+id/tv_info_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/deal_info"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/im_deal_info_id"
+        android:layout_width="238dp"
+        android:layout_height="258dp"
+        android:src="@drawable/draw_deal_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info_id"
+        app:layout_constraintBottom_toTopOf="@+id/tv_about_values_id" />
+
+    <TextView
+        android:id="@+id/tv_about_values_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transfer values taken from the site: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_tranfermarkt_id"
+        app:layout_constraintEnd_toEndOf="@+id/tv_tranfermarkt_id"
+        app:layout_constraintStart_toStartOf="@+id/tv_tranfermarkt_id" />
+
+    <TextView
+        android:id="@+id/tv_tranfermarkt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transfermarkt.com"
+        android:textColor="@color/menu_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,13 @@
 package by.paulharokh.footballvalues
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -25,13 +28,18 @@ class FragmentDeal : Fragment() {
     lateinit var viewModelF: ViewModelF
     lateinit var viewModelRes: ViewModelRes
     lateinit var viewModelGM: ViewModelGM
+    lateinit var viewModelLvl: ViewModelLvl
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         viewModelF = ViewModelProvider(activity as MainActivity).get(ViewModelF::class.java)
         viewModelRes = ViewModelProvider(activity as MainActivity).get(ViewModelRes::class.java)
         viewModelGM = ViewModelProvider(activity as MainActivity).get(ViewModelGM::class.java)
+        viewModelLvl = ViewModelProvider(activity as MainActivity).get(ViewModelLvl::class.java)
+
         return inflater.inflate(R.layout.fragment_deal, container, false)
     }
 
@@ -84,7 +92,7 @@ class FragmentDeal : Fragment() {
             tv_curr_id.visibility = View.INVISIBLE
             val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
             val editVal = editText_id.text.toString().toDouble().times(1000000)
-            val cLvl = 5
+            val cLvl = viewModelLvl.clvlVM.toDouble()
             val rangeValMax = realVal * (1 + cLvl / 100)
             val rangeValMin = realVal * (1 - cLvl / 100)
             editText_id.visibility = View.INVISIBLE
@@ -96,18 +104,18 @@ class FragmentDeal : Fragment() {
                 dialogueDelay()
 
                 tv_manager_id.visibility = View.VISIBLE
-                viewModelRes.res = true
+                viewModelRes.resVM = true
                 if (editVal > rangeValMax) {
                     tv_manager_id.text = getString(R.string.manager_ban)
                     dialogueDelay()
-                    viewModelRes.res = false
+                    viewModelRes.resVM = false
                 } else {
                     tv_manager_id.text = getString(R.string.manager_ok)
                     dialogueDelay()
                     tv_salesman_id.visibility = View.VISIBLE
                     if (editVal < rangeValMin) {
                         tv_salesman_id.text = getString(R.string.salesman_ban)
-                        viewModelRes.res = false
+                        viewModelRes.resVM = false
                     } else tv_salesman_id.text = getString(R.string.salesman_ok)
                 }
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -126,7 +134,7 @@ class FragmentDeal : Fragment() {
                         else -> Points("0", 0, 0)
                     }
 
-                    val newPoints = incP(points, viewModelRes.res)
+                    val newPoints = incP(points, viewModelRes.resVM)
                     viewModelGM.modesScoreVM!!.pointsDao().update(newPoints)
                     navController.navigate(R.id.dealResult)
                 }
@@ -135,6 +143,7 @@ class FragmentDeal : Fragment() {
         }
 
     }
+
 
     private suspend fun dialogueDelay() {
         delay(1500)

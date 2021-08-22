@@ -57,14 +57,14 @@ class FragmentModeMenu : Fragment() {
         val gkP = viewModelGM.modesScoreVM!!.pointsDao().getGkP().gmPs
 
         val modes = arrayOf(
-            GameMode(R.drawable.draw_ronaldo, "Strikers", strP),
-            GameMode(R.drawable.draw_xavi, "Midfielders", midP),
-            GameMode(R.drawable.draw_maldini, "Defenders", defP),
-            GameMode(R.drawable.draw_yashin, "Goalkeepers", gkP)
+            GameMode(R.drawable.draw_ronaldo,"Strikers", strP),
+            GameMode(R.drawable.draw_xavi,"Midfielders", midP),
+            GameMode(R.drawable.draw_maldini,"Defenders", defP),
+            GameMode(R.drawable.draw_yashin,"Goalkeepers", gkP)
         )
 
-        rv_myList_id.adapter = GameModeAdapter(modes, this)
-        rv_myList_id.layoutManager = LinearLayoutManager(context)
+        rv_game_mode_id.adapter = GameModeAdapter(modes, this)
+        rv_game_mode_id.layoutManager = LinearLayoutManager(context)
 
     }
 
@@ -72,7 +72,8 @@ class FragmentModeMenu : Fragment() {
 
         viewModelGM.adapterPosVM = adapterPosition
 
-        rv_myList_id.visibility = View.INVISIBLE
+        tv_menu_id.visibility = View.INVISIBLE
+        rv_game_mode_id.visibility = View.INVISIBLE
         tv_load_id.visibility = View.VISIBLE
         progressBar_id.visibility = View.VISIBLE
 
@@ -98,8 +99,10 @@ class FragmentModeMenu : Fragment() {
                 val footballerReq = apiRequest.getFootballer(
                     totalID,
                     "transfermarket.p.rapidapi.com",
-                    "186305a549mshfe32eafb57a74a1p1531f2jsnc6d24c94dab5"
+                    "0a7260e53dmsh17e49502b2ef372p1880d6jsn36f76282f78a"
                 )
+                //key1 186305a549mshfe32eafb57a74a1p1531f2jsnc6d24c94dab5
+                //key2 0a7260e53dmsh17e49502b2ef372p1880d6jsn36f76282f78a
 
                 footballerReq.enqueue(object : Callback<FootballerHeader> {
                     override fun onResponse(

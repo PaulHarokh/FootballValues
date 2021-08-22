@@ -17,4 +17,16 @@
         android:id="@+id/dealResult"
         android:name="by.paulharokh.footballvalues.FragmentResult"
         tools:layout="@layout/fragment_deal_result" />
+    <fragment
+        android:id="@+id/statistics"
+        android:name="by.paulharokh.footballvalues.FragmentStatistics"
+        tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/appInfo"
+        android:name="by.paulharokh.footballvalues.FragmentAppInfo"
+        tools:layout="@layout/fragment_app_info" />
+    <fragment
+        android:id="@+id/fragmentWeb"
+        android:name="by.paulharokh.footballvalues.FragmentWeb"
+        tools:layout="@layout/fragment_web" />
 </navigation>

@@ -35,7 +35,7 @@ class FragmentResult : Fragment() {
         actionB?.hide()
 
         val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
-        val dealRes = viewModelRes.res
+        val dealRes = viewModelRes.resVM
         if (dealRes) {
             im_res_id.setImageResource(R.drawable.draw_success)
             tv_deal_res_id.text = "Good job,\nreal value is ${realVal / 1000000} mln €"

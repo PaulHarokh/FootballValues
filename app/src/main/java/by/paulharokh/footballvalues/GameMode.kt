@@ -1,7 +1,7 @@
 package by.paulharokh.footballvalues
 
 data class GameMode(
-    var photoRes: Int,
-    var nameMode: String,
-    var scoreMode: Int
+    val photoRes: Int,
+    val nameMode: String,
+    val scoreMode: Int
 )

@@ -10,4 +10,7 @@
     <string name="agent">Our last bid</string>
     <string name="edit_val">enter value</string>
     <string name="btn_buy">Buy</string>
+    <string name="menu_main">Buy Footballer Now!</string>
+    <string name="deal_info">Feel like an agent on the transfer of football players between football clubs. You will join the deal during the last bid and the fate of the transfer will depend on you, but it should be borne in mind that your finances may be limited by the director of the club-buyer, and the director of the club-seller may refuse the deal if the bid amount is insufficient.</string>
+    <string name="stats_title">Favourite Game Mode: </string>
 </resources>

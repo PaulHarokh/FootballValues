@@ -14,5 +14,9 @@ class ViewModelF : ViewModel() {
 }
 
 class ViewModelRes : ViewModel() {
-    var res: Boolean = true
+    var resVM: Boolean = true
+}
+
+class ViewModelLvl : ViewModel() {
+    var clvlVM: Int = 5
 }

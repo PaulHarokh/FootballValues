@@ -28,7 +28,7 @@ class GameModeAdapter (var modes: Array<GameMode>, val fragment: FragmentModeMen
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameModeHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val layout = inflater.inflate(R.layout.item_layout, parent, false)
+        val layout = inflater.inflate(R.layout.game_mode_layout, parent, false)
         val holder = GameModeHolder(layout)
 
             holder.itemView.setOnClickListener {
