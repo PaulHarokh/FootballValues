@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui.drawer
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import by.paulharokh.footballvalues.R
 import kotlinx.android.synthetic.main.fragment_app_info.*
 
 

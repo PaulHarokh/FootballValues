@@ -1,7 +1,8 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.view_model
 
 import androidx.lifecycle.ViewModel
 import by.paulharokh.footballvalues.points_db.PointsDatabase
+import by.paulharokh.footballvalues.remote_model.FootballerHeader
 
 
 class ViewModelGM : ViewModel() {
@@ -9,7 +10,7 @@ class ViewModelGM : ViewModel() {
     var modesScoreVM: PointsDatabase? = null
 }
 
-class ViewModelF : ViewModel() {
+class ViewModelFootballer : ViewModel() {
     var footballerVM: FootballerHeader? = null
 }
 
@@ -18,5 +19,5 @@ class ViewModelRes : ViewModel() {
 }
 
 class ViewModelLvl : ViewModel() {
-    var clvlVM: Int = 5
+    var cLvlVM: Int = 5
 }

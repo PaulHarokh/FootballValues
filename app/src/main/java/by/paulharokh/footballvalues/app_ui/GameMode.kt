@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui
 
 data class GameMode(
     val photoRes: Int,

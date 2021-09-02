@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,13 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import by.paulharokh.footballvalues.*
 import by.paulharokh.footballvalues.ids_db.IdsDatabase
 import by.paulharokh.footballvalues.points_db.PointsDatabase
+import by.paulharokh.footballvalues.remote_model.ApiRequest
+import by.paulharokh.footballvalues.remote_model.FootballerHeader
+import by.paulharokh.footballvalues.view_model.ViewModelFootballer
+import by.paulharokh.footballvalues.view_model.ViewModelGM
 import kotlinx.android.synthetic.main.fragment_main_mode.*
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -24,7 +29,7 @@ class FragmentModeMenu : Fragment() {
 
     lateinit var navController: NavController
     lateinit var viewModelGM: ViewModelGM
-    lateinit var viewModelF: ViewModelF
+    lateinit var viewModelFootballer: ViewModelFootballer
 
     val apiRequest = ApiRequest.create()
 
@@ -86,7 +91,7 @@ class FragmentModeMenu : Fragment() {
 
             viewLifecycleOwner.lifecycleScope.launch {
 
-                viewModelF = ViewModelProvider(activity as MainActivity).get(ViewModelF::class.java)
+                viewModelFootballer = ViewModelProvider(activity as MainActivity).get(ViewModelFootballer::class.java)
 
                 val totalID = when (adapterPosition) {
                     0 -> db.idsDao().getStrikers().shuffled().first()
@@ -111,7 +116,7 @@ class FragmentModeMenu : Fragment() {
                     ) {
                         response.body()?.let {
 
-                            viewModelF.footballerVM = it
+                            viewModelFootballer.footballerVM = it
 
                             navController.navigate(R.id.deal)
                         }

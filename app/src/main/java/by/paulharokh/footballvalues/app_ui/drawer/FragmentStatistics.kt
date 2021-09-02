@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui.drawer
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import by.paulharokh.footballvalues.app_ui.MainActivity
+import by.paulharokh.footballvalues.R
 import by.paulharokh.footballvalues.points_db.PointsDatabase
 import kotlinx.android.synthetic.main.fragment_statistics.*
 import kotlin.math.roundToInt
@@ -41,8 +43,8 @@ class FragmentStatistics : Fragment() {
         val defPs = statsDB.pointsDao().getDefP().gmPs.toDouble()
         val gkPs = statsDB.pointsDao().getGkP().gmPs.toDouble()
 
-        if (strP == 0 || midP == 0 || defP == 0 || gkP == 0) {
-            tv_stats_title_id.text = "Please play every game mode!"
+        if (strP < 1 || midP < 1 || defP < 1 || gkP < 1) {
+            tv_stats_title_id.text = "Play every game mode!"
         } else {
 
             val statsScores = arrayListOf(strP, midP, defP, gkP)
@@ -52,31 +54,31 @@ class FragmentStatistics : Fragment() {
             when (sortedStatsScores[sortedStatsScores.lastIndex]) {
                 statsScores[0] -> {
                     tv_stats_title_id.text = tv_stats_title_id.text.toString() + " Strikers"
-                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_ronaldo)
+                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_van_nistelroy)
                 }
                 statsScores[1] -> {
                     tv_stats_title_id.text = tv_stats_title_id.text.toString() + " Midfielders"
-                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_xavi)
+                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_gerard)
                 }
                 statsScores[2] -> {
                     tv_stats_title_id.text = tv_stats_title_id.text.toString() + " Defenders"
-                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_maldini)
+                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_lahm)
                 }
                 statsScores[3] -> {
                     tv_stats_title_id.text = tv_stats_title_id.text.toString() + " Goalkeepers"
-                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_yashin)
+                    im_favourite_game_mode_id.setImageResource(R.drawable.draw_buffon)
                 }
             }
 
             fun roundStats(num: Double): Double {
-                return ((num * 100.0) * 100).roundToInt() / 100.0
+                return ((num * 100.0) * 10).roundToInt() / 10.0
             }
 
             val stats = arrayOf(
-                StatsMode("Strikers", strP, roundStats(strPs / strP)),
-                StatsMode("Midfielders", midP, roundStats(midPs / midP)),
-                StatsMode("Defenders", defP, roundStats(defPs / defP)),
-                StatsMode("Goalkeepers", gkP, roundStats(gkPs / gkP))
+                StatsMode("Strikers", strP.toString(), roundStats(strPs / strP).toString()),
+                StatsMode("Midfielders", midP.toString(), roundStats(midPs / midP).toString()),
+                StatsMode("Defenders", defP.toString(), roundStats(defPs / defP).toString()),
+                StatsMode("Goalkeepers", gkP.toString(), roundStats(gkPs / gkP).toString())
             )
 
             rv_stats_id.adapter = StatsModeAdapter(stats)

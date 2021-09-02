@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,20 +8,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import by.paulharokh.footballvalues.R
+import by.paulharokh.footballvalues.view_model.ViewModelFootballer
+import by.paulharokh.footballvalues.view_model.ViewModelRes
 import kotlinx.android.synthetic.main.fragment_deal_result.*
 
 
 class FragmentResult : Fragment() {
 
     lateinit var navController: NavController
-    lateinit var viewModelF: ViewModelF
+    lateinit var viewModelFootballer: ViewModelFootballer
     lateinit var viewModelRes: ViewModelRes
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModelF = ViewModelProvider(activity as MainActivity).get(ViewModelF::class.java)
+        viewModelFootballer = ViewModelProvider(activity as MainActivity).get(ViewModelFootballer::class.java)
         viewModelRes = ViewModelProvider(activity as MainActivity).get(ViewModelRes::class.java)
         return inflater.inflate(R.layout.fragment_deal_result, container, false)
     }
@@ -34,7 +37,7 @@ class FragmentResult : Fragment() {
         val actionB = (activity as MainActivity).supportActionBar
         actionB?.hide()
 
-        val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
+        val realVal = viewModelFootballer.footballerVM!!.data.player.marketValue.value
         val dealRes = viewModelRes.resVM
         if (dealRes) {
             im_res_id.setImageResource(R.drawable.draw_success)

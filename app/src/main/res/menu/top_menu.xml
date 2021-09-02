@@ -21,7 +21,7 @@
 
             <item
                 android:id="@+id/toolbar_high_id"
-                android:title="High"
+                android:title="Hard"
                 android:onClick="highClicked"
                 app:showAsAction="never" />
         </menu>

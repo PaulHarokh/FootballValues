@@ -1,10 +1,11 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui.drawer
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import by.paulharokh.footballvalues.R
 
 
 class StatsModeAdapter (var stats: Array<StatsMode>) :
@@ -36,8 +37,8 @@ class StatsModeAdapter (var stats: Array<StatsMode>) :
     override fun onBindViewHolder(holder: StatsModeHolder, position: Int) {
         val statMode = stats[position]
         holder.tvStatsMode?.text =  statMode.nameStat
-        holder.tvTotalScore?.text = "played: "+statMode.totalScore.toString()
-        holder.tvWinRate?.text = "winrate: "+statMode.winrate.toString()+"%"
+        holder.tvTotalScore?.text = statMode.totalScore
+        holder.tvWinRate?.text = statMode.winrate+"%"
     }
 
 }

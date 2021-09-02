@@ -1,13 +1,10 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.app_ui
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -15,7 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import by.paulharokh.footballvalues.*
 import by.paulharokh.footballvalues.points_db.Points
+import by.paulharokh.footballvalues.view_model.ViewModelFootballer
+import by.paulharokh.footballvalues.view_model.ViewModelGM
+import by.paulharokh.footballvalues.view_model.ViewModelLvl
+import by.paulharokh.footballvalues.view_model.ViewModelRes
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -25,7 +27,7 @@ import kotlinx.coroutines.*
 
 class FragmentDeal : Fragment() {
     lateinit var navController: NavController
-    lateinit var viewModelF: ViewModelF
+    lateinit var viewModelFootballer: ViewModelFootballer
     lateinit var viewModelRes: ViewModelRes
     lateinit var viewModelGM: ViewModelGM
     lateinit var viewModelLvl: ViewModelLvl
@@ -35,7 +37,7 @@ class FragmentDeal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModelF = ViewModelProvider(activity as MainActivity).get(ViewModelF::class.java)
+        viewModelFootballer = ViewModelProvider(activity as MainActivity).get(ViewModelFootballer::class.java)
         viewModelRes = ViewModelProvider(activity as MainActivity).get(ViewModelRes::class.java)
         viewModelGM = ViewModelProvider(activity as MainActivity).get(ViewModelGM::class.java)
         viewModelLvl = ViewModelProvider(activity as MainActivity).get(ViewModelLvl::class.java)
@@ -63,14 +65,14 @@ class FragmentDeal : Fragment() {
                 })
         }
 
-        urlToBitmap(this, viewModelF.footballerVM!!.data.player.image, im_footballer_id)
-        urlToBitmap(this, viewModelF.footballerVM!!.data.club.image, im_club_id)
+        urlToBitmap(this, viewModelFootballer.footballerVM!!.data.player.image, im_footballer_id)
+        urlToBitmap(this, viewModelFootballer.footballerVM!!.data.club.image, im_club_id)
 
-        var clubName = viewModelF.footballerVM?.data?.club?.name
+        var clubName = viewModelFootballer.footballerVM?.data?.club?.name
         if (clubName.equals("Vereinslos")) clubName = "Free Agent"
 
         tv_club_id.text = clubName
-        tv_footballer_name_id.text = viewModelF.footballerVM?.data?.player?.name
+        tv_footballer_name_id.text = viewModelFootballer.footballerVM?.data?.player?.name
 
         editText_id.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -90,9 +92,13 @@ class FragmentDeal : Fragment() {
 
             btn_accept_id.visibility = View.INVISIBLE
             tv_curr_id.visibility = View.INVISIBLE
-            val realVal = viewModelF.footballerVM!!.data.player.marketValue.value
-            val editVal = editText_id.text.toString().toDouble().times(1000000)
-            val cLvl = viewModelLvl.clvlVM.toDouble()
+            val realVal = viewModelFootballer.footballerVM!!.data.player.marketValue.value
+            var editText = editText_id.text.toString()
+            if (editText[0].toString() == ".") {
+                editText = "0" + editText_id.text.toString()
+            }
+            val editVal = editText.toDouble().times(1000000)
+            val cLvl = viewModelLvl.cLvlVM.toDouble()
             val rangeValMax = realVal * (1 + cLvl / 100)
             val rangeValMin = realVal * (1 - cLvl / 100)
             editText_id.visibility = View.INVISIBLE

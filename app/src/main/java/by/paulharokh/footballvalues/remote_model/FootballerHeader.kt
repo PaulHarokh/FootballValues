@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.remote_model
 
 data class FootballerHeader(
     val data: Data

@@ -1,4 +1,4 @@
-package by.paulharokh.footballvalues
+package by.paulharokh.footballvalues.remote_model
 
 import okhttp3.OkHttpClient
 import retrofit2.Call
