@@ -7,6 +7,7 @@
     app:layoutDescription="@xml/fragment_deal_scene2"
     tools:context=".app_ui.FragmentDeal">
 
+
     <ImageView
         android:id="@+id/draw_desk"
         android:layout_width="230dp"
@@ -21,10 +22,10 @@
         android:id="@+id/editText_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLength="5"
         android:gravity="center_horizontal"
         android:hint="@string/edit_val"
         android:inputType="numberDecimal"
+        android:maxLength="5"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_curr_id"
@@ -63,8 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        app:cardCornerRadius="5dp"
         app:cardBackgroundColor="@color/card_back"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -130,8 +131,8 @@
         android:layout_height="55dp"
         android:background="@drawable/draw_dialogue_start"
         android:gravity="center"
-        android:visibility="gone"
         android:textSize="12sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/tv_agent_id"
         app:layout_constraintEnd_toEndOf="@+id/desk_divider_h_id"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,8 +144,8 @@
         android:layout_height="55dp"
         android:background="@drawable/draw_dialogue_end"
         android:gravity="center"
-        android:visibility="gone"
         android:textSize="12sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/desk_divider_v_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/desk_divider_h_id"
@@ -160,10 +161,8 @@
     <View
         android:id="@+id/desk_divider_h_id"
         android:layout_width="1dp"
-        android:layout_height="809dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="@+id/draw_desk"
-        app:layout_constraintStart_toStartOf="@+id/draw_desk"
-        tools:layout_editor_absoluteY="1dp" />
-
+        app:layout_constraintStart_toStartOf="@+id/draw_desk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
